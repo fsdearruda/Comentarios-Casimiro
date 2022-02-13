@@ -1,5 +1,5 @@
 # Clone de comentários do Youtube
 
-##
+## Exemplo:
 
-<img src="./example.png"></img>
+<img src="./example.png"/>
