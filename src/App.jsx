@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./app.css";
+import "./App.css";
 import adjetivos from "./components/adjetivos";
 import Comment from "./components/Comment";
 
