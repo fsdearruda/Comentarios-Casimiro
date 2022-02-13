@@ -1,0 +1,44 @@
+.comment {
+  display: grid;
+  grid-template-columns: 4em 1fr;
+  color: #fff;
+  margin: 2em;
+}
+
+.comment-date {
+  color: rgb(156, 156, 156);
+}
+
+.comment-likes {
+  padding: 0.25em 0;
+  user-select: none;
+}
+
+.author-picture {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.comment-author {
+  cursor: pointer;
+}
+
+.like-btn {
+  cursor: pointer;
+}
+.like-btn:nth-child(2) {
+  margin-left: 0.5em;
+}
+
+.holding {
+  position: absolute;
+
+  border-radius: 50%;
+  background: red;
+  width: 12px;
+  height: 12px;
+}
+.like-qnt {
+  margin: 0 0.5em;
+}
