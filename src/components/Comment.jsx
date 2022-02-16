@@ -7,7 +7,7 @@ const Comment = props => {
   const [isLiked, setLiked] = useState(false);
   const [isDisliked, setDisliked] = useState(false);
   const [likes, setLikes] = useState(commentLikes);
-
+  const [isDown, setDown] = useState(false);
   const handleLike = liked => {
     if (liked) {
       setLikes(likes - 1);
@@ -44,6 +44,14 @@ const Comment = props => {
           <span className="like-qnt">{likes}</span>
           <span className="like-btn">
             {!isDisliked ? <MdOutlineThumbDown onClick={() => handleDislike(isDisliked)} /> : <MdThumbDown onClick={() => handleDislike(isDisliked)} />}
+          </span>
+          <span
+            onMouseDown={() => setDown(true)}
+            onMouseLeave={() => setDown(false)}
+            onMouseUp={() => setDown(false)}
+            className={`comment-reply-button${isDown ? " pressed" : ""}`}
+          >
+            responder
           </span>
         </div>
       </div>

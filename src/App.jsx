@@ -23,7 +23,7 @@ const App = () => {
             profilePic: user.picture.medium,
             commentLikes: Math.floor(Math.random() * 200) + 1,
             message: `Simplesmente o ${gerarAdjetivo()} do entretenimento`,
-            createdAt: `há ${Math.floor(Math.random() * 23) + 1} horas atrás`
+            createdAt: `há ${Math.floor(Math.random() * 23) + 1} horas atrás`,
           };
           users.push(user);
         });
@@ -37,9 +37,11 @@ const App = () => {
 
   return (
     <div>
-      {comments.sort((a,b) => b.commentLikes-a.commentLikes).map(user => (
-        <Comment key={comments.indexOf(user)} info={user} />
-      ))}
+      {comments
+        .sort((a, b) => b.commentLikes - a.commentLikes)
+        .map(user => (
+          <Comment key={comments.indexOf(user)} info={user} />
+        ))}
     </div>
   );
 };
