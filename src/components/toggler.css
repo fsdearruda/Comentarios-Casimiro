@@ -1,0 +1,12 @@
+.reply-toggler {
+  user-select: none;
+  display: grid;
+  cursor: pointer;
+  color: #43a7ff;
+  grid-template-columns: 2em 9em;
+  width: max-content;
+}
+
+.reply-toggler {
+    font-weight: 500;
+}

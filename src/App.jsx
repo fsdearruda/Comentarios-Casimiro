@@ -24,6 +24,8 @@ const App = () => {
             commentLikes: Math.floor(Math.random() * 200) + 1,
             message: `Simplesmente o ${gerarAdjetivo()} do entretenimento`,
             createdAt: `há ${Math.floor(Math.random() * 23) + 1} horas atrás`,
+            // Aqui como placeholder pra depois realmente arrumar o sistema de replies
+            replies: [user, user],
           };
           users.push(user);
         });

@@ -1,6 +1,6 @@
 .comment {
   display: grid;
-  grid-template-columns: 4em 1fr;
+  grid-template-columns: 3.5em 1fr;
   color: #fff;
   margin: 2em;
 }
@@ -27,14 +27,14 @@
 }
 
 .comment-likes {
-  margin: .3em 0;
+  margin: 0.3em 0;
   padding: 0.25em 0;
   user-select: none;
 }
 
-.author-picture {
-  width: 48px;
-  height: 48px;
+.author-picture img {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 

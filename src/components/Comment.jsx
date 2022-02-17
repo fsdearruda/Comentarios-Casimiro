@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import "./comment.css";
 import { MdThumbUp, MdOutlineThumbUp, MdThumbDown, MdOutlineThumbDown } from "react-icons/md";
+import ReplyToggler from "./ReplyToggler";
 
 const Comment = props => {
-  const { profilePic, username, commentLikes, message, createdAt } = props.info;
+  const { isReply } = props;
+  const { profilePic, username, commentLikes, message, createdAt, replies } = props.info;
   const [isLiked, setLiked] = useState(false);
   const [isDisliked, setDisliked] = useState(false);
   const [likes, setLikes] = useState(commentLikes);
   const [isDown, setDown] = useState(false);
+  const [toggleState, setToggle] = useState(false);
 
   const handleLike = liked => {
     if (liked) {
@@ -33,7 +36,9 @@ const Comment = props => {
 
   return (
     <div className="comment">
-      <img className="author-picture" src={profilePic} alt="" />
+      <div className="author-picture">
+        <img src={profilePic} alt="" />
+      </div>
       <div className="comment-details">
         <div>
           <span className="comment-author">{username} </span>
@@ -46,15 +51,21 @@ const Comment = props => {
           <span className="like-btn">
             {!isDisliked ? <MdOutlineThumbDown onClick={() => handleDislike(isDisliked)} /> : <MdThumbDown onClick={() => handleDislike(isDisliked)} />}
           </span>
-          <span
-            onMouseDown={() => setDown(true)}
-            onMouseLeave={() => setDown(false)}
-            onMouseUp={() => setDown(false)}
-            className={`comment-reply-button${isDown ? " pressed" : ""}`}
-          >
-            responder
-          </span>
+          {!isReply && (
+            <span
+              onMouseDown={() => setDown(true)}
+              onMouseLeave={() => setDown(false)}
+              onMouseUp={() => setDown(false)}
+              className={`comment-reply-button${isDown ? " pressed" : ""}`}
+            >
+              responder
+            </span>
+          )}
         </div>
+        <span onClick={() => setToggle(!toggleState)}>
+          {replies.length > 0 && (toggleState ? <ReplyToggler replyQuantity={replies.length} toggleState /> : <ReplyToggler replyQuantity={replies.length} />)}
+          {/* Adicionar renderização das replies aqui */}
+        </span>
       </div>
     </div>
   );
