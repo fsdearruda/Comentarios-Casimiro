@@ -11,19 +11,23 @@
   margin: 1em;
   text-transform: uppercase;
   color: rgb(156, 156, 156);
+  border-radius: 0.3em;
   padding: 0.5em;
-  transition: background 250ms ease;
 }
 
 .pressed {
   background: #1d1d1d;
-  transition: background 250ms ease;
+  border-radius: 0;
+  filter: brightness(1.2);
+  transition: filter 0.2s ease, border-radius 550ms ease;
 }
+
 .comment-date {
   color: rgb(156, 156, 156);
 }
 
 .comment-likes {
+  margin: .3em 0;
   padding: 0.25em 0;
   user-select: none;
 }

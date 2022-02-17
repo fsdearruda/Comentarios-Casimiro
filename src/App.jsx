@@ -14,7 +14,7 @@ const App = () => {
   useEffect(() => {
     if (isLoaded) return;
     axios
-      .get("https://randomuser.me/api/?results=10&gender=male")
+      .get("https://randomuser.me/api/?results=10")
       .then(response => {
         let users = [];
         response.data.results.forEach(user => {

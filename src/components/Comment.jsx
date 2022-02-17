@@ -8,6 +8,7 @@ const Comment = props => {
   const [isDisliked, setDisliked] = useState(false);
   const [likes, setLikes] = useState(commentLikes);
   const [isDown, setDown] = useState(false);
+
   const handleLike = liked => {
     if (liked) {
       setLikes(likes - 1);
