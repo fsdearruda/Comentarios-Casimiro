@@ -1,6 +1,4 @@
 .comment {
-  display: grid;
-  grid-template-columns: 3.5em 1fr;
   color: #fff;
   margin: 2em;
 }
@@ -32,9 +30,7 @@
   user-select: none;
 }
 
-.author-picture img {
-  width: 40px;
-  height: 40px;
+.author-picture {
   border-radius: 50%;
 }
 
@@ -51,4 +47,51 @@
 
 .like-qnt {
   margin: 0 0.5em;
+}
+
+.comment-reply-box {
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background: #111;
+}
+
+.comment-reply-box:focus {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background: #111;
+}
+
+.comment-reply-box {
+  margin: 0 0 1em;
+}
+
+.reply-cancel-btn {
+  padding: 0.5em;
+  float: right;
+  text-align: center;
+  border-radius: 0;
+  font-size: 0.8em;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: rgb(156, 156, 156);
+  transition: filter 0.2s ease, border-radius 550ms ease;
+}
+.reply-send-btn {
+  font-size: 0.8em;
+  user-select: none;
+  padding: 0.5em;
+  margin: 0 2em;
+  float: right;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #003b88;
+  text-transform: uppercase;
+  background: #3ea6ff;
+}
+.reply-emoji-icon {
+  cursor: pointer;
 }

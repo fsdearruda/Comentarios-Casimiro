@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./comment.css";
-import { MdThumbUp, MdOutlineThumbUp, MdThumbDown, MdOutlineThumbDown } from "react-icons/md";
+import { MdThumbUp, MdOutlineThumbUp, MdThumbDown, MdOutlineThumbDown, MdSentimentSatisfiedAlt } from "react-icons/md";
 import ReplyToggler from "./ReplyToggler";
 
 const Comment = props => {
@@ -11,7 +11,8 @@ const Comment = props => {
   const [likes, setLikes] = useState(commentLikes);
   const [isDown, setDown] = useState(false);
   const [toggleState, setToggle] = useState(false);
-
+  const [replyBox, openReplyBox] = useState(false);
+  const [replyState, setReplyState] = useState("");
   const handleLike = liked => {
     if (liked) {
       setLikes(likes - 1);
@@ -33,12 +34,44 @@ const Comment = props => {
       if (isLiked) setLikes(likes - 1);
     }
   };
+  // Tem que trocar isso pra outro arquivo, mas não sei como faz isso agora.
+  const ReplyInput = () => {
+    const [cancel, setCancel] = useState(false);
+    return (
+      <form style={{ display: "grid", gridTemplateColumns: "2.3em .3fr" }} className="comment-reply-input">
+        <img className="author-picture" src="/assets/no-user.png" alt="" width="24px" />
+        <div style={{ display: "grid", gridTemplateRows: "1fr 1fr" }}>
+          <input
+            onChange={e => setReplyState(e.target.value)}
+            value={replyState}
+            placeholder="Adicione uma resposta pública..."
+            className="comment-reply-box"
+            type="text"
+            autoFocus
+          ></input>
+          <div>
+            <MdSentimentSatisfiedAlt className="reply-emoji-icon" />
+            <span className="reply-send-btn">responder</span>
+            <span
+              style={{ userSelect: "none" }}
+              onMouseDown={() => setCancel(true)}
+              onMouseLeave={() => setCancel(false)}
+              onMouseUp={() => setCancel(false)}
+              onClick={() => openReplyBox(false)}
+              className={`reply-cancel-btn${cancel ? " pressed" : ""}`}
+            >
+              cancelar
+            </span>
+          </div>
+        </div>
+      </form>
+    );
+  };
 
   return (
-    <div className="comment">
-      <div className="author-picture">
-        <img src={profilePic} alt="" />
-      </div>
+    <div className="comment" style={{ display: "grid", gridTemplateColumns: isReply ? "3em 1fr" : "3.5em 1fr" }}>
+      <img className="author-picture" src={profilePic} alt="" width={isReply ? "28px" : "40px"} />
+
       <div className="comment-details">
         <div>
           <span className="comment-author">{username} </span>
@@ -56,16 +89,18 @@ const Comment = props => {
               onMouseDown={() => setDown(true)}
               onMouseLeave={() => setDown(false)}
               onMouseUp={() => setDown(false)}
+              onClick={() => openReplyBox(true)}
               className={`comment-reply-button${isDown ? " pressed" : ""}`}
             >
               responder
             </span>
           )}
         </div>
-        <span onClick={() => setToggle(!toggleState)}>
+        {replyBox && <ReplyInput />}
+        <div onClick={() => setToggle(!toggleState)}>
           {replies.length > 0 && (toggleState ? <ReplyToggler replyQuantity={replies.length} toggleState /> : <ReplyToggler replyQuantity={replies.length} />)}
           {/* Adicionar renderização das replies aqui */}
-        </span>
+        </div>
       </div>
     </div>
   );
