@@ -42,6 +42,7 @@ const Comment = props => {
       e.preventDefault();
       if (!replyState) return;
       console.log(replyState);
+      openReplyBox(false);
       setReplyState("");
     };
 
@@ -112,10 +113,10 @@ const Comment = props => {
           )}
         </div>
         {replyBox && <ReplyInput />}
-        <div onClick={() => setToggle(!toggleState)}>
+        <span style={{ display: "inline-block" }} onClick={() => setToggle(!toggleState)}>
           {replies.length > 0 && (toggleState ? <ReplyToggler replyQuantity={replies.length} toggleState /> : <ReplyToggler replyQuantity={replies.length} />)}
           {/* Adicionar renderização das replies aqui */}
-        </div>
+        </span>
       </div>
     </div>
   );
