@@ -38,13 +38,13 @@ const App = () => {
   }, [comments, isLoaded]);
 
   return (
-    <div>
+    <>
       {comments
         .sort((a, b) => b.commentLikes - a.commentLikes)
         .map(user => (
           <Comment key={comments.indexOf(user)} info={user} />
         ))}
-    </div>
+    </>
   );
 };
 

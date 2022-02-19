@@ -67,7 +67,7 @@
   margin: 0 0 1em;
 }
 
-.reply-cancel-btn {
+/* .reply-cancel-btn {
   padding: 0.5em;
   float: right;
   text-align: center;
@@ -94,4 +94,53 @@
 }
 .reply-emoji-icon {
   cursor: pointer;
+} */
+
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
+.reply-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.reply-emoji-icon {
+  font-size: 1.2em;
+}
+
+.reply-send-btn {
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  background: #3ea6ff;
+  color: #003b88;
+  padding: 0;
+  text-align: center;
+}
+
+.reply-cancel-btn {
+  font-size: 0.8em;
+  text-transform: uppercase;
+  padding: 0.5em;
+  text-align: center;
+}
+
+.disabled {
+  background: #8f8f8f;
+  color: #4d4d4d;
+}
+
+.comment-reply-container {
+  display: grid;
+  grid-template-rows: 2em 1fr;
+  min-width: 219px;
+  max-width: 20em
+}
+

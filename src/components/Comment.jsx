@@ -37,10 +37,23 @@ const Comment = props => {
   // Tem que trocar isso pra outro arquivo, mas não sei como faz isso agora.
   const ReplyInput = () => {
     const [cancel, setCancel] = useState(false);
+
+    const handleSubmit = e => {
+      e.preventDefault();
+      if (!replyState) return;
+      console.log(replyState);
+      setReplyState("");
+    };
+
+    const handleCancel = () => {
+      openReplyBox(false);
+      setReplyState("");
+    };
+
     return (
-      <form style={{ display: "grid", gridTemplateColumns: "2.3em .3fr" }} className="comment-reply-input">
+      <form onSubmit={e => handleSubmit(e)} style={{ display: "grid", gridTemplateColumns: "2.3em .3fr" }} className="comment-reply-input">
         <img className="author-picture" src="/assets/no-user.png" alt="" width="24px" />
-        <div style={{ display: "grid", gridTemplateRows: "1fr 1fr" }}>
+        <div className="comment-reply-container">
           <input
             onChange={e => setReplyState(e.target.value)}
             value={replyState}
@@ -49,19 +62,21 @@ const Comment = props => {
             type="text"
             autoFocus
           ></input>
-          <div>
+          <div className="reply-options">
             <MdSentimentSatisfiedAlt className="reply-emoji-icon" />
-            <span className="reply-send-btn">responder</span>
             <span
               style={{ userSelect: "none" }}
               onMouseDown={() => setCancel(true)}
               onMouseLeave={() => setCancel(false)}
               onMouseUp={() => setCancel(false)}
-              onClick={() => openReplyBox(false)}
+              onClick={() => handleCancel()}
               className={`reply-cancel-btn${cancel ? " pressed" : ""}`}
             >
               cancelar
             </span>
+            <button type="submit" style={{ border: "none" }} className={`reply-send-btn${replyState ? "" : " disabled"}`}>
+              responder
+            </button>
           </div>
         </div>
       </form>
